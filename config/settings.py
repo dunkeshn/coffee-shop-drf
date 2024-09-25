@@ -38,6 +38,8 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     'api',
     'common',
+    'delivery',
+    'blog',
 ]
 
 # Documentation
