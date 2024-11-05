@@ -17,7 +17,7 @@ class Product(models.Model):
     description = models.TextField('Описание товара', null=True, blank=True)
     category = models.CharField('Категория товара', max_length=100, choices=Category.choices, null=True)
     availability = models.CharField('Наличие', max_length=100, choices=Availability.choices, default=Availability.AVAILABLE)
-    image = models.ImageField('Фотография товара', blank=True)
+    image = models.ImageField('Фотография товара', blank=True, null=True)
     # rating = models.FloatField('Рейтинг товара', blank=True, null=True)
     create_date = models.DateField('Дата создания товара', auto_now_add=True)
 
