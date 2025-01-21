@@ -11,7 +11,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'full_name_link')
     list_filter = ('is_changed',)
     search_fields = ('text', 'commentator__first_name', 'commentator__last_name', 'commentator__username', )
-    autocomplete_fields = ('commentator', )
+    #autocomplete_fields = ('commentator', )
 
     def full_name_link(self, obj):
         link = reverse('admin:auth_user_change', args=[obj.commentator.id])
@@ -24,7 +24,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'full_name_link', 'title', )
     readonly_fields = ('comments', )
     search_fields = ('text', 'title', 'author__first_name', 'author__last_name', 'author__username', )
-    autocomplete_fields = ('author', )
+    #autocomplete_fields = ('author', )
 
     def full_name_link(self, obj):
         link = reverse('admin:auth_user_change', args=[obj.author.id])

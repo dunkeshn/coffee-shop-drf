@@ -10,7 +10,7 @@ from delivery.models.delivery import Delivery
 from delivery.models.order import Order
 from delivery.models.product import Product
 
-# Modules
+# Models
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price', 'category', 'availability', 'create_date', )
@@ -34,7 +34,7 @@ class CafeAdmin(admin.ModelAdmin):
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'full_name_link', 'sum', 'products_count', )
     list_display_links = ('id', )
-    autocomplete_fields = ('user', )
+    # autocomplete_fields = ('user', )
     search_fields = ('user__first_name', 'user__last_name', 'user__username', 'products', )
     readonly_fields = ('sum', )
     filter_horizontal = ('products', )
@@ -71,7 +71,7 @@ class DeliveryAdmin(admin.ModelAdmin):
     ordering = ('-time_left', )
     search_fields = ('user__first_name', 'user__last_name', 'user__username',)
     readonly_fields = ('time_left', 'geolocation', )
-    autocomplete_fields = ('user', 'courier', 'order', )
+    #autocomplete_fields = ('user', 'courier', 'order', )
 
     def courier_link(self, obj):
         link = reverse('admin:delivery_courier_change', args=[obj.courier.id])
@@ -113,7 +113,7 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ('-waiting_time', )
     search_fields = ('user__first_name', 'user__last_name', 'user__username', 'address', )
     filter_horizontal = ('products', )
-    autocomplete_fields = ('user', 'cafe', )
+    #autocomplete_fields = ('user', 'cafe', )
     radio_fields = {'delivery_status': admin.VERTICAL, 'payment_method': admin.VERTICAL}
 
 

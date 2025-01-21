@@ -1,8 +1,9 @@
-from django.contrib.auth.models import User
+
 from django.db import models
 
 from delivery.models.courier import Courier
 from delivery.models.order import Order
+from users.models.users import User
 
 
 class Delivery(models.Model):

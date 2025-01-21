@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 from blog.models.comment import Comment
+from users.models.users import User
 
 
 class Post(models.Model):

@@ -1,8 +1,8 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 from delivery.models.cafe import Cafe
 from delivery.models.product import Product
+from users.models.users import User
 
 
 class Order(models.Model):

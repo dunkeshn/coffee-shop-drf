@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+from users.models.users import User
+
 
 class Comment(models.Model):
     commentator = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='comments', verbose_name = 'Комментатор', )
