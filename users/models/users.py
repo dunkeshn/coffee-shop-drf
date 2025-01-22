@@ -1,9 +1,12 @@
+from decimal import Decimal
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 
+from delivery.models.cart import Cart
 from users.managers import CustomUserManager
 from users.models.profile import Profile
 
@@ -30,7 +33,14 @@ class User(AbstractUser):
     def __str__(self):
         return f'{self.username}'
 
+
 @receiver(post_save, sender=User)
 def post_save_user(sender, instance, created, **kwargs):
-    if not hasattr(instance, 'profile'):
-        Profile.objects.create(user=instance)
+    if created:
+        if not hasattr(instance, 'profile'):
+            Profile.objects.create(user=instance)
+        if not hasattr(instance, 'cart'):
+            cart = Cart.objects.create(user=instance)
+            cart.sum = Decimal('0.00')
+            cart.save()
+

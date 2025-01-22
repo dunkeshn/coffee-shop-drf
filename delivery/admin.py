@@ -32,7 +32,7 @@ class CafeAdmin(admin.ModelAdmin):
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'full_name_link', 'sum', 'products_count', )
+    list_display = ('id', 'sum', 'products_count', ) # 'full_name_link',
     list_display_links = ('id', )
     # autocomplete_fields = ('user', )
     search_fields = ('user__first_name', 'user__last_name', 'user__username', 'products', )
@@ -40,10 +40,10 @@ class CartAdmin(admin.ModelAdmin):
     filter_horizontal = ('products', )
 
 
-    def full_name_link(self, obj):
-        link = reverse('admin:auth_user_change', args=[obj.user.id])
-        return format_html('<a href="{}">{}</a>', link, f'{obj.user.first_name} {obj.user.last_name}')
-    full_name_link.short_description = 'Имя пользователя'
+    # def full_name_link(self, obj):
+    #     link = reverse('admin:auth_user_change', args=[obj.user.id])
+    #     return format_html('<a href="{}">{}</a>', link, f'{obj.user.first_name} {obj.user.last_name}')
+    # full_name_link.short_description = 'Имя пользователя'
 
     def products_count(self, obj):
         return obj.products_count
