@@ -97,7 +97,7 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend', )
+AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
 
 # DRF
 
@@ -106,8 +106,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATED_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
@@ -168,7 +168,7 @@ SPECTACULAR_SETTINGS = {
     ],
 
     'SERVE_AUTHENTICATION': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
 
